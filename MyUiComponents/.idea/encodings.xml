@@ -2,9 +2,6 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/pkj/wow/myuicomponents/view/PinLockDialog.java" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_lock.png" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_lock_open.png" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_lock_wrong.png" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_pin_code.xml" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/pkjlib/src/main/java/com/wheel/AbstractWheelAdapter.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/pkjlib/src/main/java/com/wheel/AbstractWheelTextAdapter.java" charset="windows-1252" />

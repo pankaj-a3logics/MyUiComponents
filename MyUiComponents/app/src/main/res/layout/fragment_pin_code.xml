@@ -222,7 +222,7 @@
                     android:layout_weight="1"
                     android:text=""
                     style="@style/key"
-                    android:src="@mipmap/ic_lock"
+                    android:src="@drawable/ic_lock_default_24dp"
                     android:background="@android:color/transparent"
                     android:scaleType="center" />
 
@@ -241,7 +241,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:onClick="setOnButtonKeyPress"
-                    android:src="@android:drawable/ic_input_delete"
+                    android:src="@drawable/ic_backspace_24dp"
                     android:background="@android:color/transparent"
                     android:scaleType="center"/>
             </LinearLayout>
