@@ -57,10 +57,10 @@ public class PinLockDialog extends DialogFragment {
     private static final int NO_OF_WHEELS = 4;
 
     // Wheel scrolled flag
-    private boolean wheelScrolled;
-    private boolean isShowPassword;
+    private boolean mWheelScrolled;
+    private boolean mIsShowPassword;
 
-    private View rootView;
+    private View mRootView;
 
     private OnFragmentInteractionListener mListener;
 
@@ -171,11 +171,11 @@ public class PinLockDialog extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootView = inflater.inflate(R.layout.fragment_pin_code, container, false);
-        ButterKnife.bind(this, rootView);
+        mRootView = inflater.inflate(R.layout.fragment_pin_code, container, false);
+        ButterKnife.bind(this, mRootView);
         mWheels = new WheelView[]{mSlot1, mSlot2, mSlot3, mSlot4};
         initView();
-        return rootView;
+        return mRootView;
     }
 
     private void initView() {
@@ -196,7 +196,7 @@ public class PinLockDialog extends DialogFragment {
         mShowPassCb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                isShowPassword = b;
+                mIsShowPassword = b;
                 showPassword();
             }
         });
@@ -205,13 +205,23 @@ public class PinLockDialog extends DialogFragment {
     private void checkForPassword(){
         Log.d("password", "currentDigit : " + currentDigit + ", mPassword" + mPassword);
         if(currentDigit.equals(mPassword)){
-            mBtnLock.setImageResource(R.mipmap.ic_lock_open);
-//            this.dismiss();
-            mPinCallBack.onUnlockSuccess();
+            mBtnLock.setImageResource(R.drawable.ic_lock_open_24dp);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    mPinCallBack.onUnlockSuccess();
+                }
+            }, 1000);
         }else{
-            mBtnLock.setImageResource(R.mipmap.ic_lock_wrong);
-//            this.dismiss();
-            mPinCallBack.onUnlockFail();
+            mBtnLock.setImageResource(R.drawable.ic_lock_24dp);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    mPinCallBack.onUnlockFail();
+                }
+            },1000);
         }
     }
 
@@ -244,7 +254,7 @@ public class PinLockDialog extends DialogFragment {
             digitCounter--;
         }
         if(digitCounter==NO_OF_WHEELS-1){
-            mBtnLock.setImageResource(R.mipmap.ic_lock);
+            mBtnLock.setImageResource(R.drawable.ic_lock_default_24dp);
         }
         if (digitCounter >= 0) {
             spinWheel(mWheels[digitCounter], 0, true);
@@ -266,7 +276,7 @@ public class PinLockDialog extends DialogFragment {
             wheel.scroll(digits.length*18 - reduce + key, 500);
         } else {
             wheel.setTag(key+"");
-            if(!isShowPassword)
+            if(!mIsShowPassword)
                 key = 10;
             wheel.scroll(-digits.length*18 - reduce + key, 500);
         }
@@ -346,11 +356,11 @@ public class PinLockDialog extends DialogFragment {
     // Wheel scrolled listener
     OnWheelScrollListener scrolledListener = new OnWheelScrollListener() {
         public void onScrollingStarted(WheelView wheel) {
-            wheelScrolled = true;
+            mWheelScrolled = true;
         }
 
         public void onScrollingFinished(WheelView wheel) {
-            wheelScrolled = false;
+            mWheelScrolled = false;
             // updateStatus();
 
 //             Toast.makeText(getActivity().getApplicationContext(), digits[wheel.getCurrentItem()], Toast.LENGTH_LONG).show();
@@ -360,7 +370,7 @@ public class PinLockDialog extends DialogFragment {
     // Wheel changed listener
     private OnWheelChangedListener changedListener = new OnWheelChangedListener() {
         public void onChanged(WheelView wheel, int oldValue, int newValue) {
-            if (!wheelScrolled) {
+            if (!mWheelScrolled) {
                 // updateStatus();
             }
         }
