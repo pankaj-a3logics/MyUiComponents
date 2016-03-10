@@ -3,7 +3,6 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/pkj/wow/myuicomponents/SplashActivity.java" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/app/src/main/java/com/pkj/wow/myuicomponents/view/PinLockDialog.java" charset="windows-1252" />
-    <file url="file://$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/logo_new_512x512_1.png" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_splash.xml" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_pin_code.xml" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/pkjlib/src/main/java/com/wheel/AbstractWheelAdapter.java" charset="windows-1252" />

@@ -117,7 +117,8 @@ public class PinLockDialog extends DialogFragment {
      */
     // TODO: Rename and change types and number of parameters
     public static PinLockDialog newInstance(String correctPin, PinCallBack pinCallBack) {
-        PinLockDialog fragment = new PinLockDialog(pinCallBack);
+        PinLockDialog fragment = new PinLockDialog();
+        fragment.setPinCallBack(pinCallBack);
         Bundle args = new Bundle();
         args.putInt(ARG_PARAM1, 2);
         args.putString(ARG_PARAM2, correctPin);
@@ -129,7 +130,7 @@ public class PinLockDialog extends DialogFragment {
         // Required empty public constructor
     }
 
-    public PinLockDialog(PinCallBack pinCallBack) {
+    public void setPinCallBack(PinCallBack pinCallBack) {
         // Required empty public constructor
         mPinCallBack = pinCallBack;
     }

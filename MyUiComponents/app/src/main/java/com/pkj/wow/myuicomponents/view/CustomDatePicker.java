@@ -114,7 +114,7 @@ public class CustomDatePicker extends EditText implements OnClickListener{
 	 *  Date Picker Fragment
 	 *  - Dialog in which Date picker shown
 	 */
-	private static class DatePickerFragment extends DialogFragment implements
+	public static class DatePickerFragment extends DialogFragment implements
 			DatePickerDialog.OnDateSetListener {
 
 		OnDateSelection OnDateSelection;
