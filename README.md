@@ -1,7 +1,7 @@
 # MyUiComponents
 Custom and easy to implement UI Components
 
-[Play Store Link](https://play.google.com/store/apps/details?id=com.puzzle.unblock.subway.candy.clash.classic.cuboid)
+[Play Store Link](https://play.google.com/store/apps/details?id=com.pkj.wow.myuicomponents)
 
 1. Custom Date Picker
     - Easy to implement
