@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.DatePicker;
 import android.widget.EditText;
 
@@ -29,7 +30,7 @@ import java.util.Calendar;
  * @author Pankaj
  *
  */
-public class CustomDatePicker extends EditText implements OnClickListener{
+public class CustomDatePicker extends EditText implements OnClickListener, View.OnFocusChangeListener{
 
 	private DatePickerFragment dpFragment;
 	private Context mContext;
@@ -67,6 +68,7 @@ public class CustomDatePicker extends EditText implements OnClickListener{
 		});
 		this.setKeyListener(null);
 		this.setOnClickListener(this);
+		this.setOnFocusChangeListener(this);
 		if (!isInEditMode()) {
 			setCustomFont();
 		}
@@ -108,6 +110,15 @@ public class CustomDatePicker extends EditText implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		showDatePickerDialog();
+	}
+
+	@Override
+	public void onFocusChange(View v, boolean hasFocus) {
+		if(hasFocus){
+			InputMethodManager imm = (InputMethodManager)mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+			imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+			showDatePickerDialog();
+		}
 	}
 
 	/**
