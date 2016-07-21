@@ -59,3 +59,23 @@ Custom and easy to implement UI Components
     ScreenShots
     -----
     ![Pin Lock Dialog](https://github.com/pkjvit/MyUiComponents/blob/master/device-2016-03-09-220225.jpg)
+
+
+3. Custom Spinner
+    - Easy to implement
+    - Nice UI and Interface
+    - Customize Font
+    
+    Usage
+    -----
+    
+    ```
+        // Example Create and use Customo spinner.
+        mSpinner            = (CustomSpinner) findViewById(R.id.spinner_cities);
+        // Set list of items to show on custom spinner
+        mSpinner.setListItems(new ArrayList<String>(Arrays.asList(items)));
+    ```
+
+    ScreenShots
+    -----
+    ![Pin Lock Dialog](https://github.com/pkjvit/MyUiComponents/blob/master/device-2016-07-22-003910.jpg)
