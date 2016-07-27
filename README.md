@@ -3,7 +3,7 @@ Custom and easy to implement UI Components
 
 [Play Store Link](https://play.google.com/store/apps/details?id=com.pkj.wow.myuicomponents)
 
-###1. Custom Date Picker
+1. Custom Date Picker
     - Easy to implement
     - Nice UI ( Material Floating touch )
     
@@ -29,7 +29,7 @@ Custom and easy to implement UI Components
     ![Custom Date Picker](https://github.com/pkjvit/MyUiComponents/blob/master/device-2016-03-09-220208.jpg)
 
 
-###2. Pin Lock Dialog
+2. Pin Lock Dialog
     - Easy to implement
     - Nice UI and Interface
     
@@ -61,7 +61,7 @@ Custom and easy to implement UI Components
     ![Pin Lock Dialog](https://github.com/pkjvit/MyUiComponents/blob/master/device-2016-03-09-220225.jpg)
 
 
-###3. Custom Spinner
+3. Custom Spinner
     - Easy to implement
     - Nice UI and Interface
     - Customize Font
