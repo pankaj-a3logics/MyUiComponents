@@ -45,16 +45,24 @@
             android:layout_marginTop="10dp">
 
             <com.pkj.wow.myuicomponents.view.CustomSpinner
+                android:id="@+id/spinner_states"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Select State"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <com.pkj.wow.myuicomponents.view.CustomSpinner
                 android:id="@+id/spinner_cities"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="@color/colorAccent"
-                android:hint="Select Item"/>
-            <!--<android.support.v7.widget.AppCompatSpinner
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableRight="@android:drawable/arrow_down_float"
-                />-->
+                android:hint="Select City"/>
+
         </android.support.design.widget.TextInputLayout>
 
 

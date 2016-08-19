@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.ListPopupWindow;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -25,13 +26,15 @@ import java.util.List;
  *
  * Created by Pankaj on 21-07-2016.
  */
-public class CustomSpinner extends EditText implements View.OnClickListener, View.OnFocusChangeListener{
+public class CustomSpinner extends EditText implements View.OnFocusChangeListener{
 
     private ListPopupWindow         mPopupWindow;
     private Context                 mContext;
     private ArrayList<String>       mListItems;
     private int                     mSelectedPosition = -1;
     private Typeface                mTypeFace;
+    private boolean                 mIsUnselectable;
+    private int                     mClearDrawableId = android.R.drawable.ic_menu_close_clear_cancel;
 
     public CustomSpinner(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
@@ -51,16 +54,31 @@ public class CustomSpinner extends EditText implements View.OnClickListener, Vie
     private void init(){
         mContext    = getContext();
 
-        Drawable arrowDrawable = mContext.getResources().getDrawable(android.R.drawable.arrow_down_float);
-        this.setCompoundDrawablesWithIntrinsicBounds(null,null,arrowDrawable, null);
-
         setCustomFont("fonts/PKJ_FANKY.ttf");
 
         this.setKeyListener(null);
-        this.setOnClickListener(this);
         this.setOnFocusChangeListener(this);
+
+        invalidateView();
     }
 
+    public void setUnselectable(boolean isUnselectable){
+        this.mIsUnselectable = isUnselectable;
+    }
+
+    public void setClearDrawable(int drawableId){
+        this.mClearDrawableId = drawableId;
+    }
+
+    private void invalidateView(){
+        if(mIsUnselectable && mSelectedPosition >= 0){
+            this.setCompoundDrawablesWithIntrinsicBounds(null, null,
+                    getContext().getResources().getDrawable(mClearDrawableId), null);
+        }else{
+            Drawable arrowDrawable = mContext.getResources().getDrawable(android.R.drawable.arrow_down_float);
+            this.setCompoundDrawablesWithIntrinsicBounds(null,null,arrowDrawable, null);
+        }
+    }
 
     @Override
     public void onFocusChange(View v, boolean hasFocus) {
@@ -112,6 +130,7 @@ public class CustomSpinner extends EditText implements View.OnClickListener, Vie
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 mSelectedPosition   =   position;
                 CustomSpinner.this.setText( mListItems.get(mSelectedPosition));
+                invalidateView();
                 mPopupWindow.dismiss();
             }
         });
@@ -140,11 +159,25 @@ public class CustomSpinner extends EditText implements View.OnClickListener, Vie
     }
 
     @Override
-    public void onClick(View v) {
-        InputMethodManager imm = (InputMethodManager)mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-        showPopupWindow();
+    public boolean onTouchEvent(MotionEvent event) {
 
+        if(event.getAction() == MotionEvent.ACTION_UP){
+            int x = (int) event.getX();
+            int cancelWidth = 0;
+            if(getCompoundDrawables()[2]!=null){
+                cancelWidth = getCompoundDrawables()[2].getIntrinsicWidth();
+            }
+            if(x > this.getWidth()-cancelWidth){
+                this.setText("");
+                mSelectedPosition = -1;
+                invalidateView();
+            }else{
+                InputMethodManager imm = (InputMethodManager)mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(this.getWindowToken(), 0);
+                showPopupWindow();
+            }
+        }
+        return super.onTouchEvent(event);
     }
 
     /**

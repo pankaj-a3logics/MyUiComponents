@@ -21,8 +21,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText                mFullNameEt;
     private DialogFragment          mPinLockDialog;
     private FloatingActionButton    mFabBtn;
-    private CustomSpinner mSpinner;
-    private String[] items = {"Items-1","Items-2","Items-3","Items-4","Items-5","Items-6","Items-7","Items-8"};
+    private CustomSpinner           mSpinnerStats;
+    private CustomSpinner           mSpinnerCities;
+    private String[] stats          = {"Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh","Jammu and Kashmir","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal","Andaman and Nicobar","Chandigarh","Dadra and Nagar Haveli","Daman and Diu","Lakshadweep","Delhi","Puducherry"};
+    private String[] smartCities    = {"Goa","Mumbai","Bangluru","Delhi","Gurgaon","Noida","Pune","Hydrabaad","Jaipur"};
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +36,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mFullNameEt         = (EditText) findViewById(R.id.et_full_name);
         mFabBtn             = (FloatingActionButton) findViewById(R.id.fab);
-        mSpinner            = (CustomSpinner) findViewById(R.id.spinner_cities);
+        mSpinnerStats       = (CustomSpinner) findViewById(R.id.spinner_states);
+        mSpinnerCities      = (CustomSpinner) findViewById(R.id.spinner_cities);
 
         mFabBtn.setOnClickListener(this);
 
         // Set list of items to show on custom spinner
-        mSpinner.setListItems(new ArrayList<String>(Arrays.asList(items)));
+        mSpinnerStats.setListItems(new ArrayList<String>(Arrays.asList(stats)));
+
+        mSpinnerCities.setListItems(new ArrayList<String>(Arrays.asList(smartCities)));
+        mSpinnerCities.setUnselectable(true);
     }
+
 
 
     private void openPinDialog(){
