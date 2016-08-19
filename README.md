@@ -74,8 +74,11 @@ Custom and easy to implement UI Components
         mSpinner            = (CustomSpinner) findViewById(R.id.spinner_cities);
         // Set list of items to show on custom spinner
         mSpinner.setListItems(new ArrayList<String>(Arrays.asList(items)));
+        // Set spinner un-selectable or clear after selection
+        mSpinner.setUnselectable(true);
     ```
 
     ScreenShots
     -----
     ![Pin Lock Dialog](https://github.com/pkjvit/MyUiComponents/blob/master/device-2016-07-22-003910.jpg)
+    ![Pin Lock Dialog](https://github.com/pkjvit/MyUiComponents/blob/master/device-2016-08-19-231109.jpg)
