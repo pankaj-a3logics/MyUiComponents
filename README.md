@@ -65,6 +65,7 @@ Custom and easy to implement UI Components
     - Easy to implement
     - Nice UI and Interface
     - Customize Font
+    - Un-selectable ( can be clear after item selection easily )
     
     Usage
     -----
